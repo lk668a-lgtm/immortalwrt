@@ -10,11 +10,7 @@ uci set system.@system[0].zonename='Asia/Shanghai'
 
 uci -q set luci.main.lang='zh_cn' 2>/dev/null
 
-# 默认主题：装上了 Argon 才切，避免切到不存在的主题白屏
-if [ -d /www/luci-static/argon ]; then
-	uci -q set luci.main.mediaurlbase='/luci-static/argon' 2>/dev/null
-	uci -q set luci.main.darkmode='1' 2>/dev/null
-fi
+# 默认主题交给 98-buer-wrt-theme（里面用 argon.@global[0].mode='dark'，字段已核实）
 
 uci commit system 2>/dev/null
 uci -q commit luci 2>/dev/null
