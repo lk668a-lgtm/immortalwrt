@@ -1,0 +1,21 @@
+#!/bin/sh
+# Buer-Wrt 首次启动的品牌与默认设置
+[ -f /etc/config/system ] || exit 0
+uci -q get system.@system[0] >/dev/null || exit 0
+
+uci set system.@system[0].hostname='Buer-Wrt'
+uci set system.@system[0].description='Buer-Wrt'
+uci set system.@system[0].timezone='CST-8'
+uci set system.@system[0].zonename='Asia/Shanghai'
+
+uci -q set luci.main.lang='zh_cn' 2>/dev/null
+
+# 默认主题：装上了 Argon 才切，避免切到不存在的主题白屏
+if [ -d /www/luci-static/argon ]; then
+	uci -q set luci.main.mediaurlbase='/luci-static/argon' 2>/dev/null
+	uci -q set luci.main.darkmode='1' 2>/dev/null
+fi
+
+uci commit system 2>/dev/null
+uci -q commit luci 2>/dev/null
+exit 0
