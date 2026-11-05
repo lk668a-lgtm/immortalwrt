@@ -5,6 +5,7 @@
 ## 与上游的差别
 - 预装 `luci-app-tkproxy`（多线路分流插件，未预置卡密，客户自行激活）
 - 品牌改为 **Buer-Wrt**（banner / 主机名 / 系统描述）
+- 管理地址 **192.168.8.1**，root 密码 `password`，无线密码 `12345678`（首次启动自动设置）
 - 默认中文、Asia/Shanghai、Argon 深色主题（主题装上时）
 - 新增 `.github/workflows/build-buer-wrt.yml`：推送即编译，产物在 Actions → Artifacts
 
@@ -16,7 +17,8 @@
 
 ## 刷机
 - 设备进入 U-Boot 网页恢复（192.168.1.1）→ 选择文件 → Upload
-- 刷完自动重启，默认后台 http://192.168.1.1 ，root 无密码（首次请立刻设置密码）
+- 刷完自动重启，后台 **http://192.168.8.1**，用户名 `root`，密码 `password`
+- 默认无线：`Buer-Wrt` / `Buer-Wrt-5G`，密码 `12345678`
 - 进「服务 → 多线路分流」输入卡密激活
 
 ## 注意
